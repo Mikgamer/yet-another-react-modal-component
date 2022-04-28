@@ -1,0 +1,40 @@
+.yetAnotherReactModalComponent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  padding: 48px 56px;
+}
+
+.yetAnotherReactModalComponent::backdrop {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgb(0 0 0/0.2);
+}
+
+.yetAnotherReactModalComponent:not([open]) {
+  display: none;
+}
+
+.yetAnotherReactModalComponent[open] {
+  display: block;
+}
+
+.yetAnotherReactModalComponentCloseButton {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 48px;
+  width: 48px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  filter: brightness(0);
+}
