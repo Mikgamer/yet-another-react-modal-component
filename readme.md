@@ -28,13 +28,13 @@ Yet Another [React](https://reactjs.org/) Modal Component
 ### With [npm](https://npmjs.org/) :
 
 ```
-npm install @mikgamer/yet-another-react-modal-component
+npm install yet-another-react-modal-component
 ```
 
 ### With [yarn](https://yarnpkg.com) :
 
 ```
-yarn add @mikgamer/yet-another-react-modal-component
+yarn add yet-another-react-modal-component
 ```
 
 ## Example
