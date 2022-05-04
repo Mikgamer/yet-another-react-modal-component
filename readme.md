@@ -1,9 +1,10 @@
 # yet-another-react-modal-component
 
+[![](https://img.shields.io/npm/v/yet-another-react-modal-component)](https://www.npmjs.com/package/yet-another-react-modal-component)
 [![GitHub](https://img.shields.io/static/v1?message=GitHub&color=181717&logo=GitHub&logoColor=FFFFFF&label=)](https://github.com/Mikgamer/yet-another-react-modal-component)
-[![License: MIT](https://img.shields.io/badge/License-MIT-darkgreen.svg)](https://opensource.org/licenses/MIT)
-[![React Version](https://img.shields.io/badge/React-^18.0.0-blue.svg)](https://reactjs.org/)
-[![npm (scoped)](https://img.shields.io/npm/v/mikgamer/yet-another-react-modal-component)]()
+[![](https://img.shields.io/npm/l/yet-another-react-modal-component)](https://opensource.org/licenses/MIT)
+[![](https://img.shields.io/github/package-json/dependency-version/mikgamer/yet-another-react-modal-component/dev/react)](https://reactjs.org/)
+![](https://img.shields.io/snyk/vulnerabilities/npm/yet-another-react-modal-component)
 
 Yet Another [React](https://reactjs.org/) Modal Component
 
