@@ -1,4 +1,4 @@
-# @mikgamer/yet-another-react-modal-component
+# yet-another-react-modal-component
 
 [![GitHub](https://img.shields.io/static/v1?message=GitHub&color=181717&logo=GitHub&logoColor=FFFFFF&label=)](https://github.com/Mikgamer/yet-another-react-modal-component)
 [![License: MIT](https://img.shields.io/badge/License-MIT-darkgreen.svg)](https://opensource.org/licenses/MIT)
