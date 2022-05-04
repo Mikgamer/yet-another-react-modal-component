@@ -62,7 +62,7 @@ const App = () => {
 
 There is 3 function : `openModal`, `closeModal` and `toggleModal` :
 
-### `openModal` :
+### `openModal`
 
 Use `openModal` to strictly open a modal :
 
@@ -86,7 +86,7 @@ const App = () => {
 }
 ```
 
-### `closeModal` :
+### `closeModal`
 
 Use `closeModal` to strictly close a modal :
 
@@ -113,7 +113,7 @@ const App = () => {
 }
 ```
 
-### `toggleModal` :
+### `toggleModal`
 
 Use `toggleModal` to toggle a modal :
 
@@ -142,7 +142,7 @@ const App = () => {
 
 ## Options
 
-### `noCloseButton` :
+### `noCloseButton`
 
 The modal come with a close button that can be disabled with `noCloseButton` :
 
@@ -153,7 +153,7 @@ The modal come with a close button that can be disabled with `noCloseButton` :
 </Modal>
 ```
 
-### `noBackdropClose` :
+### `noBackdropClose`
 
 The modal backdrop can be closed on click, it can be disabled with `noBackdropClose` :
 
@@ -164,7 +164,7 @@ The modal backdrop can be closed on click, it can be disabled with `noBackdropCl
 </Modal>
 ```
 
-### `defaultOpen` :
+### `defaultOpen`
 
 The modal can be opened by default with `defaultOpen` :
 
@@ -175,7 +175,7 @@ The modal can be opened by default with `defaultOpen` :
 </Modal>
 ```
 
-### Other props :
+### Other props
 
 You can also add any other props :
 
