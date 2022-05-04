@@ -1,6 +1,6 @@
 {
   "name": "yet-another-react-modal-component",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Yet another react modal component",
   "main": "index.js",
   "scripts": {
