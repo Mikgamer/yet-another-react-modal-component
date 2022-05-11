@@ -3,6 +3,13 @@ import { render, screen, fireEvent } from "@testing-library/react"
 
 import Modal, { openModal, closeModal, toggleModal } from "./index.js"
 
+HTMLDialogElement.prototype.showModal = jest.fn()
+HTMLDialogElement.prototype.close = jest.fn()
+const showModalSpy = jest.spyOn(HTMLDialogElement.prototype, "showModal")
+const closeModalSpy = jest.spyOn(HTMLDialogElement.prototype, "close")
+
+afterEach(() => {jest.clearAllMocks()})
+
 describe("Modal", () => {
   test("have childs", () => {
     render(<Modal id="example"><h1>Title</h1>Example text</Modal>)
@@ -15,11 +22,10 @@ describe("Modal", () => {
     expect(screen.getByText(/Example text/)).not.toHaveAttribute("open")
   })
 
-  // test("is open with 'defaultOpen'", () => {
-  //   render(<Modal defaultOpen>Example text</Modal>)
-  //   expect(screen.getByText(/Example text/)).toHaveAttribute("aria-modal", "true")
-  //   expect(screen.getByText(/Example text/)).toHaveAttribute("open")
-  // })
+  test("have 'defaultOpen' open the modal", () => {
+    render(<Modal defaultOpen>Example text</Modal>)
+    expect(showModalSpy).toHaveBeenCalled()
+  })
 
   test("have a close button by default", () => {
     render(<Modal>Example text</Modal>)
@@ -43,66 +49,27 @@ describe("Modal", () => {
 })
 
 describe("Functions", () => {
-  // test("'openModal' open modal", () => {
-  //   render(<>
-  //     <button onClick={() => openModal("#example") }>Open Modal</button>
-  //     <Modal id="example">Example text</Modal>
-  //   </>)
-  //   expect(screen.getByText(/Example text/)).toHaveAttribute("aria-modal", "false")
-  //   expect(screen.getByText(/Example text/)).not.toHaveAttribute("open")
-  //   fireEvent.click(screen.getByText(/Open Modal/))
-  //   expect(screen.getByText(/Example text/)).toHaveAttribute("aria-modal", "true")
-  //   expect(screen.getByText(/Example text/)).toHaveAttribute("open")
-  // })
+  test("'openModal' open the modal", () => {
+    render(<Modal id="example">Example text</Modal>)
+    openModal("#example")
+    expect(showModalSpy).toHaveBeenCalled()
+  })
 
-  // test("'openModal' does not close modal", () => {
-  //   render(<>
-  //     <button onClick={() => openModal("#example") }>Open Modal</button>
-  //     <Modal id="example" defaultOpen>Example text</Modal>
-  //   </>)
-  //   expect(screen.getByText(/Example text/)).toHaveAttribute("aria-modal", "true")
-  //   expect(screen.getByText(/Example text/)).toHaveAttribute("open")
-  //   fireEvent.click(screen.getByText(/Open Modal/))
-  //   expect(screen.getByText(/Example text/)).toHaveAttribute("aria-modal", "true")
-  //   expect(screen.getByText(/Example text/)).toHaveAttribute("open")
-  // })
+  test("'closeModal' close the modal", () => {
+    render(<Modal id="example">Example text</Modal>)
+    closeModal("#example")
+    expect(closeModalSpy).toHaveBeenCalled()
+  })
 
-  // test("'closeModal' close modal", () => {
-  //   render(<>
-  //     <button onClick={() => closeModal("#example") }>Close Modal</button>
-  //     <Modal id="example" defaultOpen>Example text</Modal>
-  //   </>)
-  //   expect(screen.getByText(/Example text/)).toHaveAttribute("aria-modal", "true")
-  //   expect(screen.getByText(/Example text/)).toHaveAttribute("open")
-  //   fireEvent.click(screen.getByText(/Close Modal/))
-  //   expect(screen.getByText(/Example text/)).toHaveAttribute("aria-modal", "false")
-  //   expect(screen.getByText(/Example text/)).not.toHaveAttribute("open")
-  // })
-
-  // test("'closeModal' does not open modal", () => {
-  //   render(<>
-  //     <button onClick={() => closeModal("#example") }>Close Modal</button>
-  //     <Modal id="example">Example text</Modal>
-  //   </>)
-  //   expect(screen.getByText(/Example text/)).toHaveAttribute("aria-modal", "false")
-  //   expect(screen.getByText(/Example text/)).not.toHaveAttribute("open")
-  //   fireEvent.click(screen.getByText(/Close Modal/))
-  //   expect(screen.getByText(/Example text/)).toHaveAttribute("aria-modal", "false")
-  //   expect(screen.getByText(/Example text/)).not.toHaveAttribute("open")
-  // })
-
-  // test("'toggleModal' toggle modal", () => {
-  //   render(<>
-  //     <button onClick={() => toggleModal("#example") }>Toggle Modal</button>
-  //     <Modal id="example">Example text</Modal>
-  //   </>)
-  //   expect(screen.getByText(/Example text/)).toHaveAttribute("aria-modal", "false")
-  //   expect(screen.getByText(/Example text/)).not.toHaveAttribute("open")
-  //   fireEvent.click(screen.getByText(/Toggle Modal/))
-  //   expect(screen.getByText(/Example text/)).toHaveAttribute("aria-modal", "true")
-  //   expect(screen.getByText(/Example text/)).toHaveAttribute("open")
-  //   fireEvent.click(screen.getByText(/Toggle Modal/))
-  //   expect(screen.getByText(/Example text/)).toHaveAttribute("aria-modal", "false")
-  //   expect(screen.getByText(/Example text/)).not.toHaveAttribute("open")
-  // })
+  test("'toggleModal' toggle the modal", () => {
+    const result = render(<Modal id="example">Example text</Modal>)
+    toggleModal("#example")
+    expect(showModalSpy).toHaveBeenCalled()
+    expect(closeModalSpy).not.toHaveBeenCalled()
+    jest.clearAllMocks()
+    result.rerender(<Modal id="example" open>Example text</Modal>)
+    toggleModal("#example")
+    expect(showModalSpy).not.toHaveBeenCalled()
+    expect(closeModalSpy).toHaveBeenCalled()
+  })
 })
